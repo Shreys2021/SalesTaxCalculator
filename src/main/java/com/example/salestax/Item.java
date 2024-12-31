@@ -1,37 +1,51 @@
 package com.example.salestax;
 
 public class Item {
-    private String name;
+    private String description;
     private double price;
-    private int quantity;
-    private boolean isImported;
     private boolean isExempt;
+    private boolean isImported;
+    private int quantity;
+    private double salesTax;
 
-    public Item(String name, double price, int quantity, boolean isImported, boolean isExempt) {
-        this.name = name;
+    public Item(String description, double price, int quantity, boolean isExempt, boolean isImported) {
+        this.description = description;
         this.price = price;
         this.quantity = quantity;
-        this.isImported = isImported;
         this.isExempt = isExempt;
+        this.isImported = isImported;
+        this.salesTax = 0.0;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
     public double getPrice() {
         return price;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public boolean isExempt() {
+        return isExempt;
     }
 
     public boolean isImported() {
         return isImported;
     }
 
-    public boolean isExempt() {
-        return isExempt;
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public double getSalesTax() {
+        return salesTax;
+    }
+
+    public void setSalesTax(double salesTax) {
+        this.salesTax = salesTax;
+    }
+
+    public double getTotalPrice() {
+        return (price + salesTax) * quantity;
     }
 }

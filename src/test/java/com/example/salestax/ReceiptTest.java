@@ -1,27 +1,43 @@
 package com.example.salestax;
 
 import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class ReceiptTest {
 
     @Test
-    public void testReceiptForInput2() {
+    public void testReceiptCalculationForInput1() {
+        List<Item> items = new ArrayList<>();
+        items.add(new Item("book", 12.49, 1, false, true));
+        items.add(new Item("music CD", 14.99, 1, false, false));
+        items.add(new Item("chocolate bar", 0.85, 1, false, true));
+
+        Receipt receipt = new Receipt(items);
+        ReceiptResult result = receipt.calculateReceipt();
+
+        assertEquals(1.50, result.getTotalTaxes(), 0.01);
+        assertEquals(29.83, result.getTotalCost(), 0.01);
+    }
+
+    @Test
+    public void testReceiptCalculationForInput2() {
         List<Item> items = new ArrayList<>();
         items.add(new Item("imported box of chocolates", 10.00, 1, true, true));
         items.add(new Item("imported bottle of perfume", 47.50, 1, true, false));
 
         Receipt receipt = new Receipt(items);
-        receipt.generateReceipt();
+        ReceiptResult result = receipt.calculateReceipt();
 
-        assertEquals(65.15, receipt.getTotal(), 0.01);
-        assertEquals(7.65, receipt.getSalesTaxes(), 0.01);
+        assertEquals(7.65, result.getTotalTaxes(), 0.01);
+        assertEquals(65.15, result.getTotalCost(), 0.01);
     }
 
     @Test
-    public void testReceiptForInput3() {
+    public void testReceiptCalculationForInput3() {
         List<Item> items = new ArrayList<>();
         items.add(new Item("imported bottle of perfume", 27.99, 1, true, false));
         items.add(new Item("bottle of perfume", 18.99, 1, false, false));
@@ -29,9 +45,9 @@ public class ReceiptTest {
         items.add(new Item("imported box of chocolates", 11.25, 1, true, true));
 
         Receipt receipt = new Receipt(items);
-        receipt.generateReceipt();
+        ReceiptResult result = receipt.calculateReceipt();
 
-        assertEquals(74.68, receipt.getTotal(), 0.01);
-        assertEquals(6.70, receipt.getSalesTaxes(), 0.01);
+        assertEquals(6.70, result.getTotalTaxes(), 0.01);
+        assertEquals(74.68, result.getTotalCost(), 0.01);
     }
 }

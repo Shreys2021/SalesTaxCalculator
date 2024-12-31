@@ -1,37 +1,37 @@
 package com.example.salestax;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Receipt {
-    private List<Item> items;
-    private double salesTaxes;
-    private double total;
+
+    private final List<Item> items;
 
     public Receipt(List<Item> items) {
         this.items = items;
-        this.salesTaxes = 0.0;
-        this.total = 0.0;
     }
 
-    public void generateReceipt() {
+    public ReceiptResult calculateReceipt() {
+        double totalTaxes = 0.0;
+        double totalCost = 0.0;
+
         for (Item item : items) {
-            double tax = TaxCalculator.calculateSalesTax(item);
-            double itemTotal = item.getPrice() + tax;
-            salesTaxes += tax;
-            total += itemTotal;
-
-            System.out.println(item.getQuantity() + " " + (item.isImported() ? "imported " : "") + item.getName() + ": "
-                    + String.format("%.2f", itemTotal));
+            double salesTax = calculateSalesTax(item);
+            item.setSalesTax(salesTax);
+            totalTaxes += salesTax * item.getQuantity();
+            totalCost += item.getTotalPrice();
         }
-        System.out.println("Sales Taxes: " + String.format("%.2f", salesTaxes));
-        System.out.println("Total: " + String.format("%.2f", total));
+
+        return new ReceiptResult(items, totalTaxes, totalCost);
     }
 
-    public double getSalesTaxes() {
-        return salesTaxes;
+    private double calculateSalesTax(Item item) {
+        double basicTax = item.isExempt() ? 0.0 : roundUpToNearestFiveCents(item.getPrice() * 0.10);
+        double importDuty = item.isImported() ? roundUpToNearestFiveCents(item.getPrice() * 0.05) : 0.0;
+        return basicTax + importDuty;
     }
 
-    public double getTotal() {
-        return total;
+    private double roundUpToNearestFiveCents(double value) {
+        return Math.ceil(value * 20.0) / 20.0;
     }
 }

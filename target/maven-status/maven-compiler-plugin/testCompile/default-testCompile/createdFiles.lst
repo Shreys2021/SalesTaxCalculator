@@ -1,0 +1,5 @@
+com\example\salestax\ItemTest.class
+com\example\salestax\ReceiptTest.class
+com\example\salestax\AppTest.class
+com\example\salestax\TaxCalculatorTest.class
+com\example\salestax\OutputHandlerTest.class

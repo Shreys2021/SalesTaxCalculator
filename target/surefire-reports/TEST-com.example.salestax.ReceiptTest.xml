@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.salestax.TaxCalculatorTest" time="0.001" tests="4" errors="0" skipped="0" failures="2">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.salestax.ReceiptTest" time="0.002" tests="3" errors="0" skipped="0" failures="3">
   <properties>
     <property name="java.specification.version" value="14"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -55,15 +55,13 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="58.0"/>
   </properties>
-  <testcase name="testCalculateSalesTaxForNonExemptItem" classname="com.example.salestax.TaxCalculatorTest" time="0.0"/>
-  <testcase name="testCalculateSalesTaxForImportedExemptItem" classname="com.example.salestax.TaxCalculatorTest" time="0.0"/>
-  <testcase name="testCalculateSalesTaxForImportedNonExemptItem" classname="com.example.salestax.TaxCalculatorTest" time="0.0">
-    <failure message="expected:&lt;7.15&gt; but was:&lt;0.0&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<7.15> but was:<0.0>
+  <testcase name="testReceiptCalculationForInput1" classname="com.example.salestax.ReceiptTest" time="0.0">
+    <failure message="expected:&lt;1.5&gt; but was:&lt;3.55&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<1.5> but was:<3.55>
 	at org.junit.Assert.fail(Assert.java:89)
 	at org.junit.Assert.failNotEquals(Assert.java:835)
 	at org.junit.Assert.assertEquals(Assert.java:555)
 	at org.junit.Assert.assertEquals(Assert.java:685)
-	at com.example.salestax.TaxCalculatorTest.testCalculateSalesTaxForImportedNonExemptItem(TaxCalculatorTest.java:33)
+	at com.example.salestax.ReceiptTest.testReceiptCalculationForInput1(ReceiptTest.java:22)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -94,13 +92,50 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 ]]></failure>
   </testcase>
-  <testcase name="testCalculateSalesTaxForExemptItem" classname="com.example.salestax.TaxCalculatorTest" time="0.0">
-    <failure message="expected:&lt;0.0&gt; but was:&lt;1.9&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<0.0> but was:<1.9>
+  <testcase name="testReceiptCalculationForInput2" classname="com.example.salestax.ReceiptTest" time="0.0">
+    <failure message="expected:&lt;7.65&gt; but was:&lt;0.5&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<7.65> but was:<0.5>
 	at org.junit.Assert.fail(Assert.java:89)
 	at org.junit.Assert.failNotEquals(Assert.java:835)
 	at org.junit.Assert.assertEquals(Assert.java:555)
 	at org.junit.Assert.assertEquals(Assert.java:685)
-	at com.example.salestax.TaxCalculatorTest.testCalculateSalesTaxForExemptItem(TaxCalculatorTest.java:12)
+	at com.example.salestax.ReceiptTest.testReceiptCalculationForInput2(ReceiptTest.java:35)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]></failure>
+  </testcase>
+  <testcase name="testReceiptCalculationForInput3" classname="com.example.salestax.ReceiptTest" time="0.0">
+    <failure message="expected:&lt;6.7&gt; but was:&lt;4.0&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<6.7> but was:<4.0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:685)
+	at com.example.salestax.ReceiptTest.testReceiptCalculationForInput3(ReceiptTest.java:50)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
